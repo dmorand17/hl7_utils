@@ -17,7 +17,10 @@ With git:
 ```bash
 git clone https://github.com/dmorand17/hl7_utils
 cd hl7_utils
+python3 -m venv env
+source ./env/bin/activate
 pip install -r requirements.txt
+source ./env/bin/deactivate
 ```
 
 With pip (_not yet implemented_):
