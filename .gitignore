@@ -1,2 +1,21 @@
+# VSCode
+__pycache__/
+
+# virtualenv
+env/
+env
+
+# Packages
+*.egg
+*.egg-info
+build
+dist
+dist/*
+eggs
+
+# Logs
+logs/
+
+# project specific
 .msgs
 .files
