@@ -3,7 +3,14 @@
 `hl7_utils` are a suite of HL7 utilities.
 
 ## Utilities
-Current list of modules includes...
+
+### Create HL7 messages from jinja template
+
+Example of running command
+```bash
+python3 hl7_template_builder.py -i samples/input-data.csv -t samples/hl7-template.j2 -k MRN SYSTEMCODE
+```
+
 
 ## Installing
 With git:

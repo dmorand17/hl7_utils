@@ -1,0 +1,16 @@
+{% for row in rows -%}
+
+{% set visit_cnt = row['VISITNUM'] | int %}
+{% for visitnum in range(1, visit_cnt+1) %}
+{% if visitnum > 1 -%}
+<<MSG>>
+{% endif %}
+MSH|^~\&|SENDING^210634484|U0AE^210634484|System^XYZ||{{ now | dateformat(fmt="%Y%m%d%H%M") }}||ADT^A08|{{ range(1000000,9000000) | random }}|P|2.5.1
+EVN|A08|{{ now | dateformat(fmt="%Y%m%d%H%M") }}
+PID|||{{ row['MRN'] }}^^^&row['SYSTEMCODE']||{{ row['LASTNAME'] }}^{{ row['FIRSTNAME'] }}^^||{{ row['DOB'] | dateformat("%Y%m%d") }}|{{ row['GENDER'] }}||941^Patient Declined|{{ row['ADDR1'] }}^^{{ row['CITY'] }}^NJ^{{ row['ZIP'] }}^UNITED STATES||{{ row['PHONE'] }}||124^English|U||||||
+PV1|1|{{ row['ENCCLASS'] }}||Elective|||1467957092^^^^^^^^900004&NPI^^^^NPI|||RAD|||N|PhyRef|||||{{ row['MRN'] + visitnum*2 | string }}^^^27&row['SYSTEMCODE']^^^20200207|Mcaid|||||||||||||||||||1|||||202002171130
+PV2|||||||||||||||N||||||N||R Outpatient||||||||N|||||N||||OUT
+DG1|1||Z12.31^Encntr screen mammogram for malignant neoplasm of breast^ICD10-CM||202002181005|Adm|||||||||1
+IN1|1|21719^BCBS-IL: (PPO)|21719|BCBS-IL: (PPO)|PO BOX 805107^^CHICAGO^IL^60680-3625|^|(800)972-8088|287825||||||||{{ row['LASTNAME'] }}^{{ row['FIRSTNAME'] }}^|Self|{{ row['DOB'] | dateformat("%Y%m%d") }}||||1||||||||||||||AYY8239999995|||||||M
+{% endfor %}
+{%- endfor %}
